@@ -204,8 +204,12 @@
         label:has(input[name="phone"])
         {
             display: inline-flex;
-            align-items: center;
             position: relative;
+            display: -webkit-inline-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
         }
         
         label:has(input[name="phoneCode"]) {
