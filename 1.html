@@ -222,10 +222,16 @@
         label:has(input[name="phone"]) {
             width: 60%;
             margin: 0 !important;
+            display: inline-flex;
+            display: -webkit-inline-flex;
+             align-items: baseline;
+            -webkit-align-items: baseline;
         }
 
         label:has(input[name="phone"]) input {
             margin: 0 !important;
+            align-self: baseline;
+            -webkit-align-self: baseline;
         }
         
         #selectOptionForm {
