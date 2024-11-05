@@ -1,0 +1,358 @@
+<html><head><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        #formContainer * {
+            margin: 10px 0;
+        }
+        body {
+            font: 11px/14px Karla, Arial, sans-serif;
+            color: #131314;
+        }
+        .form-control {
+            height: 1.75rem;
+            padding: 0.4375rem 0.875rem;
+            font-size: 0.6875rem;
+            font-weight: 400;
+            line-height: 1;
+            color: #131314;
+            border: 0;
+            box-shadow: 0 0 8px #dedede;
+        }
+        .form-control:focus {
+            color: #4F5258;
+            outline: 0;
+            box-shadow: 0 0 8px #dedede;
+        }
+        .form-control::placeholder {
+            color: #BDBDBD;
+            opacity: 1;
+        }
+        .form-control::-ms-input-placeholder {color: #BDBDBD}
+        .form-select {
+            height: 1.75rem;
+            padding: 0.4375rem 0.875rem 0.4375rem 1.25rem;
+            font-size: 0.6875rem;
+            font-weight: 400;
+            line-height: 1;
+            color: #4F5258;
+            border: 0;
+            box-shadow: 0 0 8px #dedede;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image:url('data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMjQiIGhlaWdodD0iMTAyNCIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCI+Cjx0aXRsZT48L3RpdGxlPgo8ZyBpZD0iaWNvbW9vbi1pZ25vcmUiPgo8L2c+CjxwYXRoIGQ9Ik0xMDExLjQ1MyAyMjUuNTI4Yy0xNi43My0xNi44MTYtNDMuODc1LTE2LjgxNi02MC42MDUgMGwtNDM4LjgyMyA0ODEuNTA4LTQzOC44NjktNDgxLjUwOGMtMTYuNzMtMTYuODE2LTQzLjg3Ny0xNi44MTYtNjAuNjA3IDBzLTE2LjczIDQ0LjA4OSAwIDYwLjkwM2w0NjYuOTk3IDUxMi40MDNjOC45MTkgOC45NjMgMjAuNzg0IDEyLjgwMyAzMi40MzUgMTIuMjA4IDExLjY5MiAwLjU5NiAyMy41MTgtMy4yNDQgMzIuNDM3LTEyLjIwOGw0NjcuMDM4LTUxMi40NDhjMTYuNzI5LTE2LjgxMiAxNi43MjktNDQuMDQyLTAuMDAyLTYwLjg1OHoiPjwvcGF0aD4KPC9zdmc+Cg==');
+            background-repeat: no-repeat;
+            background-size: 9px 6px;
+            background-position-x: 7px;
+            background-position-y: 11px;
+        }
+        .form-select:focus {
+            color: #4F5258;
+            outline: 0;
+            box-shadow: 0 0 8px #dedede;
+        }
+        .button {
+            border: 1px solid #63676D;
+            border-radius: 3.125rem;
+            padding: 8px 15px;
+            min-width: 7.25rem;
+            font: 700 11px/14px Karla, Arial, sans-serif;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            background: #63676D;
+            box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.6), 2px 2px 6px rgba(207, 207, 207, 0.6);
+        }
+        .button:hover,
+        .button:focus {
+            background: #fff;
+            color: #63676D;
+            box-shadow: -2px -2px 6px #FFFFFF, 2px 2px 6px #CFCFCF;
+            text-decoration: none;
+            outline: none;
+        }
+        .button2 {
+            background: #40E3CC;
+            border-color:#40E3CC;
+            color: #fff;
+            box-shadow: -2px -2px 6px #FFFFFF, 2px 2px 6px #CFCFCF;
+        }
+        .button2:hover,
+        .button2:focus {
+            background: #fff;
+            color: #40E3CC;
+            box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.6), 2px 2px 6px rgba(207, 207, 207, 0.6);
+        }
+    </style>
+    <style>
+           body {
+               display: flex;
+               justify-content: center;
+               align-items: flex-start;
+               text-align:center;
+               height: 100vh;
+               margin: 0;
+           }
+    
+           #selectOptionForm {
+               text-align: left;
+               width: 310px;
+               padding: 20px;
+               margin-top: 10px;
+           }
+    
+           #selectOptionForm label,
+           #selectOptionForm input,
+           #selectOptionForm button {
+               margin-bottom: 10px;
+               margin-top: 3px;
+           }
+           
+           [disabled] {
+               display: none;
+           }
+           
+           .form-select {
+              margin: 10px 0;
+           }
+           
+           label:has([disabled]) {
+              display: none;
+           }
+           
+           .invalid-feedback {
+              display: block;
+           }
+           
+           button {
+              display: block !important;
+              margin-top: 10px !important;
+           }
+        
+           label {
+              width: 100%;
+              display: block;
+           }
+    </style>
+    <script>
+       function createOnChangeFilter(linkElementId, elementToChangeId, valuesToFilter) {
+           let trackComboBox = document.getElementById(linkElementId);
+           let elementToFilter = document.getElementById(elementToChangeId);
+           let toggleHidden = exclusiveSet => {
+               if(!valuesToFilter.includes(trackComboBox.value)) {
+                   elementToFilter.setAttribute("disabled", "");
+               }
+               else if(exclusiveSet) {
+                   elementToFilter.toggleAttribute("disabled");
+               }
+               else {
+                   elementToFilter.removeAttribute("disabled");
+               }
+           }
+           
+           toggleHidden();
+        
+           trackComboBox.addEventListener("change", () => toggleHidden());
+           const mutationCallback = (mutationsList) => {
+               for (const mutation of mutationsList) {
+                   toggleHidden(true);
+               }
+           }
+           const observer = new MutationObserver(mutationCallback);
+           observer.observe(trackComboBox, {
+               attributeFilter: ["disabled"],
+               attributes: true
+           });
+        }
+    </script>
+    </head><body><form class="mb-3" id="selectOptionForm" action="" method="post">
+            <label>
+           Date of birth:
+           <input class="form-control" type="date" id="dob" name="dob" value="1995-01-06" p-id="2c8d2eeb-44ed-4b1a-9982-1a2580ff180b" min="1930-01-01" max="2024-11-04" required="">
+        </label>
+        <label>
+            Zip Code:
+            <input class="form-control" type="text" id="zipCode" name="zipCode" p-id="e7a485b1-7b24-4f37-a0ca-db77365cc8ec" value="" required="">
+        </label>
+        <label>
+            City:
+            <input class="form-control" type="text" id="city" name="city" p-id="1966fd9d-110f-4da7-967f-e5ab8b87af2d" value="" required="">
+        </label>
+        <label>
+            State:
+            <input class="form-control" type="text" id="state" name="state" p-id="4d5f08d4-2f28-4cf1-ad48-243b9055d9df" value="" required="">
+        </label>
+        <label>
+            Address:
+            <input class="form-control" type="text" id="address" name="address" p-id="0af4106e-a3d4-410f-b2cb-2f7874372bf5" value="" required="">
+        </label>
+        <label>
+            Address Number:
+            <input class="form-control" type="text" id="addressNumber" name="addressNumber" p-id="c8271fc7-f004-461c-86dc-440013a36fbe" value="" required="">
+        </label>
+        <label>
+            Phone:
+            <input class="form-control is-invalid" type="text" id="phoneCode" name="phoneCode" p-id="16cf903d-59da-408d-99f3-185c11c869aa" value="" required="" pattern="^\+[1-9]{1}[0-9]{0,2}$">
+        </label>
+        <label>
+            
+            <input class="form-control" type="text" id="phone" name="phone" p-id="b5ad834f-ae21-4d4e-ab00-f291e612846a" value="" required="" pattern="\d*">
+        </label>
+        <div class="invalid-feedback" input-id="16cf903d-59da-408d-99f3-185c11c869aa">Please match the requested format.</div><button class="button button2 d-block w-100" type="submit">Submit</button>
+    </form>
+    <script></script>
+        <style>
+        label:has(input[name="phoneCode"]),
+        label:has(input[name="phone"])
+        {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        label:has(input[name="phoneCode"]) {
+            width: 39%;
+        }
+        
+        input[name="phoneCode"] {
+            margin: 0 0 0 10px !important;
+        }
+        
+        label:has(input[name="phone"]) {
+            width: 60%;
+        }
+        
+        #selectOptionForm {
+            width: 400px;
+        }
+        </style><script>
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        let running = true;
+        input.oninvalid = (evt) => {                
+            if(running) {
+                let errorEl = document.querySelector(`[input-id="${input.getAttribute("p-id")}"]`);
+                if(errorEl != null) errorEl.remove();
+                
+                var errorElHtml = `<div class="invalid-feedback" input-id=${input.getAttribute("p-id")}>${input.validationMessage}</div>`;
+                if(input.getAttribute("name") == "phone" || input.getAttribute("name") == "phoneCode") {
+                    let buttonElement = document.querySelector('button[type="submit"]');
+                    buttonElement.insertAdjacentHTML("beforebegin", errorElHtml);
+                }
+                else {
+                    input.insertAdjacentHTML("afterend", errorElHtml);
+                }
+    
+                running = false;
+                evt.preventDefault();
+                input.scrollIntoView({ behavior: "instant", block: "center"});
+                input.classList.add("is-invalid");
+                running = true;
+            }
+        };
+        
+        input.onchange = () => {
+            let errorEl = document.querySelector(`[input-id="${input.getAttribute("p-id")}"]`);
+            let isValid = input.checkValidity();
+            if(isValid) {
+                if(errorEl != null) errorEl.remove();
+                input.classList.remove("is-invalid");
+            }
+        }
+    });
+    </script>
+    <img class="loadingImage" src="https://cashier.paytiko.com/assets/images/loader.gif">
+    <style>
+        .loadingImage {
+            display: none;
+            align-self: center;
+        }
+        .errorMessage {
+           display: flex;
+           justify-content: center;
+           align-content: center;
+           color: rgb(204, 41, 61);
+        }
+    </style>
+    <script>
+        let form = document.querySelector("form");
+        form.onsubmit = async event => {
+            event.preventDefault();
+            
+            form.style.display = "none";
+            document.querySelector(".loadingImage").style.display = "block";
+            
+            let paymentContext = JSON.parse('{"PaymentProcessorId":70897,"PaymentProcessorKey":"61993ae5-8250-4ad9-8a3b-7ed85048877a","PaymentSystem":null,"TransactionId":null,"LoggingTransactionId":null,"AccountUid":null,"Account":{"MerchantId":4,"UniqueIdentifier":"12345","GroupId":1,"FirstName":"Artur","LastName":"LomakinUkraineUSD","Email":"arturlomakinusd@gmail.com","Street":null,"Region":null,"City":null,"Phone":null,"ZipCode":null,"Country":"BR","Dob":"1995-01-06T00:00:00+00:00","Gender":false,"Currency":1,"CreatedDate":"2024-09-30T08:31:21.891267+00:00","UpdatedDate":"2024-11-04T09:32:56.143303+00:00","IsDisabled":false,"LastIpAddress":null,"LastActionDate":null,"ECommerceMerchantId":null,"UsdTotalPayIn":0.0,"UsdTotalPayOut":0.0,"EurTotalPayIn":0.0,"EurTotalPayOut":0.0,"GbpTotalPayIn":0.0,"GbpTotalPayOut":0.0,"ApprovalRatio":0.0,"StickyPaymentProcessorId":null,"CardDataSavingConfirmed":false,"Id":10281047},"Currency":0,"Amount":100.0,"CardNumber":null,"CardHolder":null,"CardType":0,"CardToken":null,"ExpirationMonth":null,"ExpirationYear":null,"Cvv":null,"UserAgent":null,"Source":0,"SourceUrl":"dev-crm.paytiko.com","SessionToken":null,"CreditCardCountry":null,"CardIssuer":null,"BinType":null,"IsPayOut":false,"IsFromVirtualTerminal":true,"IsRefund":false,"RefundOriginalTransactionId":0,"MerchantOrderId":null,"MerchantLocale":null,"CascadingSessionId":null,"AutomaticCascadingEnabled":false,"InitiatorUserId":null,"InitiatorOrganizationId":null,"InitiatorIP":null,"IsAutoCascading":false,"ManualBillingFieldsEntering":false,"WithdrawalRequestId":null,"AncestorRedirection":false,"RequestedEmail":null,"Token":null,"BinRuleId":null,"AdditionalFields":{},"IsECommerce":false,"ECommerceNotificationUrl":null,"ECommerceSuccessPageUrl":null,"ECommerceFailedPageUrl":null,"IsFromPaymentLink":false,"PaymentLinkKey":null,"IsHostedPage":false,"HostedPageNotificationUrl":null,"HostedPageSuccessPageUrl":null,"HostedPageFailedPageUrl":null,"IsDirectPayment":false,"DirectPaymentNotificationUrl":null,"DirectPaymentSuccessPageUrl":null,"DirectPaymentFailedPageUrl":null,"GatewaySpecificData":null,"SubscriptionKey":null,"ForSubscription":false,"IsRetry":false,"DepositLimits":{"MinAmount":1.0,"MaxAmount":10000.0,"AccountCurrencyToUsdRate":null},"OrderDetails":null,"CurrencyEntry":null,"IgnoreConversion":false,"CardDataSavingConfirmed":false,"PayoutRequestId":null,"CardTokenInUse":false,"Description":null,"SubscriptionOptions":null,"PreAuthSource":false,"ClientOS":null,"MerchantUrl":null,"TaxPercentage":null}');
+            
+            
+            
+            let fetchUrl = 'https://dev-core.paytiko.com' + 
+            (
+               paymentContext.IsFromVirtualTerminal
+                   ? '/api/cashier/payment/virtualTerminal'
+                   : '/api/cashier/payment'
+            );
+            
+                let formData = new FormData(event.target);
+        let dataObj = Object.fromEntries(formData.entries());
+    
+        let notAccountAdditionalFields = {
+            addressNumber: dataObj.addressNumber,
+            phoneCode: dataObj.phoneCode,
+            state: dataObj.state
+        };
+        
+        paymentContext.AdditionalFields = {...paymentContext.AdditionalFields, ...notAccountAdditionalFields};
+    
+        paymentContext.Account.Dob = dataObj.dob;
+        paymentContext.Account.ZipCode = dataObj.zipCode;
+        paymentContext.Account.Street = dataObj.address;
+        paymentContext.Account.City = dataObj.city;
+        paymentContext.Account.Phone = dataObj.phone;
+            
+            const response = await fetch(fetchUrl, {
+                method: 'post',
+                body: JSON.stringify(paymentContext),
+                headers: {"Accept":["application/json, text/plain, */*"],"Accept-Encoding":["gzip, deflate, br, zstd"],"Accept-Language":["en,ru;q=0.9,uk;q=0.8,de;q=0.7,de-DE;q=0.6,en-GB;q=0.5"],"Authorization":["Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJcEFkZHJlc3MiOiI5Mi4xMTkuMjMxLjcyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIzMDkwMiIsIm9yZ2FuaXphdGlvbl9pZCI6IjIiLCJPcmdhbml6YXRpb25JZCI6IjIiLCJJc0h5cGVyQWRtaW4iOiJ0cnVlIiwiZXhwIjoxNzMxMDY4NjA3LCJpc3MiOiJXZWJTZXJ2ZXIiLCJhdWQiOiJVaUFwcCJ9.8DWKXcsgSulbNwwwBuU-GEoFMNk9lEWEO69EcVyF67w"],"Connection":["close"],"Content-Length":["681"],"Content-Type":["application/json"],"Host":["dev-core.paytiko.com"],"Referer":["https://dev-crm.paytiko.com/"],"User-Agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0"],"currenttab":["transactions"],"merchantid":["4"],"sec-ch-ua-platform":["\"Windows\""],"sec-ch-ua":["\"Chromium\";v=\"130\", \"Microsoft Edge\";v=\"130\", \"Not?A_Brand\";v=\"99\""],"sec-ch-ua-mobile":["?0"],"webbrprops":["{\"colorDepth\":24,\"screenWidth\":1920,\"screenHeight\":1080,\"timeZone\":-120}"],"origin":["https://dev-crm.paytiko.com"],"sec-fetch-site":["same-site"],"sec-fetch-mode":["cors"],"sec-fetch-dest":["empty"],"priority":["u=1, i"]}
+            });
+            
+            const responseJson = await response.json();
+            
+            const rejectedStatus = 3;
+            
+            const typesEnum = {
+               form: 2,
+               redirect: 3
+            };
+            
+            document.querySelector(".loadingImage").style.display = "none";
+            
+            if (responseJson.status == rejectedStatus) {
+                const errorDiv = document.createElement("div");
+                const textNode = document.createTextNode(responseJson.errorMessage);
+                errorDiv.appendChild(textNode);
+                errorDiv.classList.add("errorMessage");
+                document.body.appendChild(errorDiv);
+            }
+            else {
+               switch(responseJson.type) {
+                   case typesEnum.redirect:
+                       top.location.href = responseJson.data;
+                       break;
+                   case typesEnum.form:
+                       document.querySelectorAll("style").forEach(el => el.remove());
+                       document.body.innerHTML = responseJson.data;
+                       
+                       let parsedDoc = new DOMParser().parseFromString(responseJson.data, "text/html");
+                       let scripts = parsedDoc.querySelectorAll("script");
+                       scripts.forEach(s => {
+                           var scriptEl = document.createElement("script");
+                           scriptEl.text = s.innerText;
+                           document.body.appendChild(scriptEl);
+                       });
+                       
+                       
+                       
+                       break;
+               }
+            }
+        }
+    </script></body></html>
